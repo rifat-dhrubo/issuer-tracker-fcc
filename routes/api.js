@@ -1,41 +1,19 @@
-/*
-*
-*
-*       Complete the API routing below
-*
-*
-*/
+const expect = require('chai').expect;
+const express = require('express');
+const router = express.Router();
+const {
+	createIssue,
+	updateIssue,
+	getIssue,
+	deleteIssue,
+} = require('../controllers/issuesController');
 
-'use strict';
+router
+	.route('/:project')
+	.post(createIssue)
+	.put(updateIssue)
+	.delete(deleteIssue);
 
-var expect = require('chai').expect;
-var MongoClient = require('mongodb');
-var ObjectId = require('mongodb').ObjectID;
+router.route('/:title').get(getIssue);
 
-const CONNECTION_STRING = process.env.DB; //MongoClient.connect(CONNECTION_STRING, function(err, db) {});
-
-module.exports = function (app) {
-
-  app.route('/api/issues/:project')
-  
-    .get(function (req, res){
-      var project = req.params.project;
-      
-    })
-    
-    .post(function (req, res){
-      var project = req.params.project;
-      
-    })
-    
-    .put(function (req, res){
-      var project = req.params.project;
-      
-    })
-    
-    .delete(function (req, res){
-      var project = req.params.project;
-      
-    });
-    
-};
+module.exports = router;
