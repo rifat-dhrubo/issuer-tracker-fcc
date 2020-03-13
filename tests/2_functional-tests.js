@@ -78,18 +78,39 @@ suite('Functional Tests', function() {
 
 	suite('PUT /api/issues/{project} => text', function() {
 		test('No body', function(done) {
-			assert.equal(res.status, 200);
-			assert.equal(res.body, 'no updated field sent');
+			chai.request(server)
+				.put('/api/issues/test')
+				.send({})
+				.end(function(err, res) {
+					assert.equal(res.status, 200);
+					assert.equal(res.body, 'successfully updated');
+				});
+
+			done();
 		});
 
 		test('One field to update', function(done) {
-			assert.equal(res.status, 200);
-			assert.equal(res.body, 'successfully updated');
+			chai.request(server)
+				.put('/api/issues/test')
+				.send({})
+				.end(function(err, res) {
+					assert.equal(res.status, 200);
+					assert.equal(res.body, 'successfully updated');
+				});
+
+			done();
 		});
 
 		test('Multiple fields to update', function(done) {
-			assert.equal(res.status, 200);
-			assert.equal(res.body, 'successfully updated');
+			chai.request(server)
+				.put('/api/issues/test')
+				.send({})
+				.end(function(err, res) {
+					assert.equal(res.status, 200);
+					assert.equal(res.body, 'successfully updated');
+				});
+
+			done();
 		});
 	});
 
